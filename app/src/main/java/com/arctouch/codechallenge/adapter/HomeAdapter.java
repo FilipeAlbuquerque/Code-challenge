@@ -1,4 +1,4 @@
-package com.arctouch.codechallenge.home;
+package com.arctouch.codechallenge.adapter;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
