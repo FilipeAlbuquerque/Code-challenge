@@ -24,7 +24,7 @@ public class DetailsActivity extends AppCompatActivity {
 
     ImageView posterImageView;
     TextView movieTitle, overview, genres, genresIds, releaseDateTextView;
-    //String thumbnail;
+    
 
 
     @SuppressLint("CheckResult")
