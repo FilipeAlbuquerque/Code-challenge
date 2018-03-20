@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.ProgressBar;
 
 import com.arctouch.codechallenge.R;
+import com.arctouch.codechallenge.adapter.HomeAdapter;
 import com.arctouch.codechallenge.api.TmdbApi;
 import com.arctouch.codechallenge.base.BaseActivity;
 import com.arctouch.codechallenge.data.Cache;
@@ -44,7 +45,7 @@ public class HomeActivity extends BaseActivity {
                         }
                     }
 
-                    recyclerView.setAdapter(new HomeAdapter(response.results));
+                    recyclerView.setAdapter(new HomeAdapter(this,response.results));
                     progressBar.setVisibility(View.GONE);
                 });
     }
