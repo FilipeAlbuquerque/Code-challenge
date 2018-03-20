@@ -24,13 +24,17 @@ import java.util.List;
 
 public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
 
+    //adding Context
     private List<Movie> movies;
     private Context mContext;
 
+    //constructor
     public HomeAdapter(Context mContext, List<Movie> movies) {
         this.movies = movies;
         this.mContext=mContext;
     }
+
+    //hold the image in memory of each indivudal item
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
@@ -66,7 +70,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
             }
         }
     }
-
+                // method responsible to inflate the view
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -83,20 +87,22 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.bind(movies.get(position));
 
-        holder.parentLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(mContext, DetailsActivity.class);
-                intent.putExtra("original_title", movies.get(position).getTitle());
-                intent.putExtra("poster_path", movies.get(position).getPosterPath());
-                intent.putExtra("overview", movies.get(position).getOverview());
-                intent.putExtra("release_date", movies.get(position).getReleaseDate());
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                mContext.startActivity(intent);
+        holder.parentLayout.setOnClickListener(view -> {
 
-                Toast.makeText(view.getContext(), "You clicked in: " +
-                        movies.get(position).getTitle(), Toast.LENGTH_SHORT).show();
-            }
+            //Changing to another activity after clicked
+            Intent intent = new Intent(mContext, DetailsActivity.class);
+            intent.putExtra("original_title", movies.get(position).getTitle());
+            intent.putExtra("image_name", movies.get(position).getTitle());
+            intent.putExtra("poster_path", movies.get(position).getPosterPath());
+            intent.putExtra("overview", movies.get(position).getOverview());
+            intent.putExtra("release_date", movies.get(position).getReleaseDate());
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+            //starting the activity
+            mContext.startActivity(intent);
+
+            Toast.makeText(view.getContext(), "You clicked in: " +
+                    movies.get(position).getTitle(), Toast.LENGTH_SHORT).show();
         });
     }
 }

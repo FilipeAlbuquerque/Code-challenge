@@ -16,8 +16,6 @@ public class DetailsActivity extends AppCompatActivity {
 
     private static final String TAG = "MovieDetailsActivity";
 
-    ImageView image;
-    TextView movieTitle, overView, releaseDateTextView;
 
     @SuppressLint("CheckResult")
     @Override
@@ -33,14 +31,14 @@ public class DetailsActivity extends AppCompatActivity {
     private void getIntentIncoming() {
 
         if (getIntent().hasExtra("image_name") && getIntent().hasExtra("original_title")
-                && getIntent().hasExtra("image_overview") && getIntent().hasExtra("image_releaseDate")) {
+                && getIntent().hasExtra("image_overview") && getIntent().hasExtra("release_date")) {
 
             Log.d(TAG, "getIntentIncoming: found intent extras");
 
             String imageName = getIntent().getStringExtra("image_name");
             String textTitle = getIntent().getStringExtra("original_title");
-            String textOverview = getIntent().getStringExtra("image_overview");
-            String textReleaseDate = getIntent().getStringExtra("image_releaseDate");
+            String textOverview = getIntent().getStringExtra("overview");
+            String textReleaseDate = getIntent().getStringExtra("release_date");
 
             //calling the method
             setImage(textTitle, imageName, textOverview, textReleaseDate);
@@ -53,10 +51,14 @@ public class DetailsActivity extends AppCompatActivity {
     private void setImage(String textTitle, String imageName, String textOverview,
                            String textReleaseDate) {
 
-
+        TextView movieTitle = findViewById(R.id.text_title);
         movieTitle.setText(textTitle);
+
+        TextView overView = findViewById(R.id.text_overview);
         overView.setText(textOverview);
-        releaseDateTextView.setText(textReleaseDate);
+
+        TextView releaseDate = findViewById(R.id.releaseDateTextView);
+        releaseDate.setText(textReleaseDate);
 
         //setting the imageview
         ImageView image = findViewById(R.id.posterImageView2);
