@@ -16,8 +16,8 @@ public class DetailsActivity extends AppCompatActivity {
 
     private static final String TAG = "MovieDetailsActivity";
 
-    ImageView posterImageView;
-    TextView movieTitle, overview, releaseDateTextView;
+    ImageView image;
+    TextView movieTitle, overView, releaseDateTextView;
 
     @SuppressLint("CheckResult")
     @Override
@@ -28,17 +28,12 @@ public class DetailsActivity extends AppCompatActivity {
 
         getIntentIncoming();
 
-        posterImageView.findViewById(R.id.posterImageView2);
-        movieTitle.findViewById(R.id.text_title);
-        overview.findViewById(R.id.text_overview);
-        releaseDateTextView.findViewById(R.id.text_releaseDateTextView);
     }
 
     private void getIntentIncoming() {
 
         if (getIntent().hasExtra("image_name") && getIntent().hasExtra("original_title")
-                && getIntent().hasExtra("image_overview") && getIntent().hasExtra("image_genres")
-                && getIntent().hasExtra("image_releaseDate")) {
+                && getIntent().hasExtra("image_overview") && getIntent().hasExtra("image_releaseDate")) {
 
             Log.d(TAG, "getIntentIncoming: found intent extras");
 
@@ -58,15 +53,10 @@ public class DetailsActivity extends AppCompatActivity {
     private void setImage(String textTitle, String imageName, String textOverview,
                            String textReleaseDate) {
 
-        TextView title = findViewById(R.id.text_title);
-        title.setText(textTitle);
 
-        TextView overView = findViewById(R.id.text_overview);
+        movieTitle.setText(textTitle);
         overView.setText(textOverview);
-
-
-        TextView releaseDate = findViewById(R.id.text_releaseDateTextView);
-        releaseDate.setText(textReleaseDate);
+        releaseDateTextView.setText(textReleaseDate);
 
         //setting the imageview
         ImageView image = findViewById(R.id.posterImageView2);

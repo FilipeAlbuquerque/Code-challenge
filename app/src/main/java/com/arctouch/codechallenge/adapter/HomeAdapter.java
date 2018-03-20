@@ -90,7 +90,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
                 intent.putExtra("original_title", movies.get(position).getTitle());
                 intent.putExtra("poster_path", movies.get(position).getPosterPath());
                 intent.putExtra("overview", movies.get(position).getOverview());
-                intent.putExtra("releasedate", movies.get(position).getReleaseDate());
+                intent.putExtra("release_date", movies.get(position).getReleaseDate());
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 mContext.startActivity(intent);
 
